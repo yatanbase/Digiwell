@@ -1,0 +1,52 @@
+
+.profileBox{
+    background-color: white;
+    padding: .5rem;
+    display: flex;
+    justify-content: center;
+    width:15rem;
+    height: 5rem;
+    gap: 1px;
+    margin: 1px;
+}
+
+.profileHead{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    width: 60%;
+    height: 90%;
+    overflow: hidden;
+   
+}
+
+.profileHead span{
+    color: hwb(160 3% 22%);
+    font-size: 2.5rem;
+    margin: 0;
+    position: relative;
+    top: 20px;
+}
+
+
+
+.profilePic {
+    border: 1px solid black;
+    overflow: hidden; /* Ensure that any overflow is hidden */
+    border-radius: 50%; /* Makes the container circular */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 5rem; /* Width of the container */
+    height: 5rem; /* Height of the container, same as width for 1:1 aspect ratio */
+    /* Adjust width and height as needed */
+  }
+  
+  .profilePic img {
+    width: 100%; /* Scale the image to fill the container */
+    height: 100%; /* Scale the image to fill the container */
+    object-fit: cover; /* Ensures the image covers the container without distortion */
+    border-radius: 50%; /* Ensures the image inside also follows the circular shape */
+  }
+  
