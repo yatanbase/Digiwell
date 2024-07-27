@@ -1,7 +1,12 @@
-import React from 'react'
+import React from "react";
+import NavBar from "../../Components/NavBar/NavBar";
+import { Outlet } from "react-router-dom";
 
 export default function MainPage() {
   return (
-    <div>MainPage</div>
-  )
+    <div className="h-dvh p-4 flex gap-4">
+      <NavBar />
+      <Outlet />
+    </div>
+  );
 }
