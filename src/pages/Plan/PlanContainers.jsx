@@ -1,8 +1,9 @@
-import React, { memo, useState } from "react";
+import React, { memo, useEffect, useState } from "react";
 import { BiSolidCheckboxChecked } from "react-icons/bi";
 import { IoIosArrowDown } from "react-icons/io";
 
 function getDominantColorFromSrc(src) {
+  ///Note: if we make these calculation on the backend while saving the data then the frontend will be much more then it is now.
   return new Promise((resolve, reject) => {
     const img = new Image();
     img.crossOrigin = "Anonymous"; // Handle cross-origin issues
@@ -44,11 +45,11 @@ function getDominantColorFromSrc(src) {
 
 const PlanContainers = memo(({ heading, points = [], imgSrc }) => {
   const [bgColor, setBgcolor] = useState("white");
-  console.log(
+  useEffect(() => {
     getDominantColorFromSrc(imgSrc)
-      .then((color) => setBgcolor(color))
-      .catch((err) => console.error(err))
-  );
+      .then((color) => setTimeout(setBgcolor(color), 1000))
+      .catch((err) => console.error(err));
+  }, [imgSrc]);
   return (
     <div
       className="p-4 flex gap-4 rounded-2xl bg-white"

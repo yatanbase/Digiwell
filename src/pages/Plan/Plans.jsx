@@ -1,4 +1,4 @@
-import React, { memo, useState } from "react";
+import React, { memo, useMemo, useState } from "react";
 import { TiStarFullOutline } from "react-icons/ti";
 import { IoIosArrowDown } from "react-icons/io";
 import PlanContainers from "./PlanContainers";
@@ -6,37 +6,39 @@ import img from "../../assets/imgs/billow926-vS5dRGz5xQg-unsplash.jpg";
 import img2 from "../../assets/imgs/char-beck-AY8Rh-K5b4g-unsplash.jpg";
 import img3 from "../../assets/imgs/candice-seplow-Nfw3-kdOt7o-unsplash.jpg";
 
-const detailsArray = [
-  {
-    src: img,
-    heading: "Mindful Moments",
-    points: [
-      "Guided 10-minute meditation sessions each morning.",
-      "Interactive workshops focusing on stress management and mindfulness techniques.",
-      "Daily sessions with a certified mediation expert to set and achieve mental health goals.",
-    ],
-  },
-  {
-    src: img2,
-    heading: "Healthy Eating",
-    points: [
-      "Personalized meal plans based on your dietary needs.",
-      "Cooking workshops with professional chefs.",
-      "Tips on maintaining a balanced diet.",
-    ],
-  },
-  {
-    src: img3,
-    heading: "Fitness Frenzy",
-    points: [
-      "Daily workout routines tailored to your fitness level.",
-      "Access to online fitness classes and tutorials.",
-      "One-on-one coaching with fitness experts.",
-    ],
-  },
-];
-
 const Plans = memo(() => {
+  const detailsArray = useMemo(
+    () => [
+      {
+        src: img,
+        heading: "Mindful Moments",
+        points: [
+          "Guided 10-minute meditation sessions each morning.",
+          "Interactive workshops focusing on stress management and mindfulness techniques.",
+          "Daily sessions with a certified mediation expert to set and achieve mental health goals.",
+        ],
+      },
+      {
+        src: img2,
+        heading: "Healthy Eating",
+        points: [
+          "Personalized meal plans based on your dietary needs.",
+          "Cooking workshops with professional chefs.",
+          "Tips on maintaining a balanced diet.",
+        ],
+      },
+      {
+        src: img3,
+        heading: "Fitness Frenzy",
+        points: [
+          "Daily workout routines tailored to your fitness level.",
+          "Access to online fitness classes and tutorials.",
+          "One-on-one coaching with fitness experts.",
+        ],
+      },
+    ],
+    []
+  );
   const [plansPageNo, setPlansPageNo] = useState(1);
   return (
     <div className="PlansSection flex flex-col gap-4">
