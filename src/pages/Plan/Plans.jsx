@@ -1,4 +1,4 @@
-import React, { memo, useMemo, useState } from "react";
+import React, { memo, useCallback, useMemo, useState } from "react";
 import { TiStarFullOutline } from "react-icons/ti";
 import { IoIosArrowDown } from "react-icons/io";
 import PlanContainers from "./PlanContainers";
@@ -7,6 +7,11 @@ import img2 from "../../assets/imgs/char-beck-AY8Rh-K5b4g-unsplash.jpg";
 import img3 from "../../assets/imgs/candice-seplow-Nfw3-kdOt7o-unsplash.jpg";
 
 const Plans = memo(() => {
+  const [typeOfPlansInView, setTypeOfPlansInView] = useState(0);
+  const changeTypeOfPlans = useCallback((e) => {
+    const planCode = e.currentTarget.id;
+    setTypeOfPlansInView(Number(planCode));
+  }, []);
   const detailsArray = useMemo(
     () => [
       {
@@ -41,9 +46,9 @@ const Plans = memo(() => {
   );
   const [plansPageNo, setPlansPageNo] = useState(1);
   return (
-    <div className="PlansSection flex flex-col gap-4">
+    <div className="PlansSection flex flex-col gap-4 h-full overflow-y-hidden">
       <div
-        className="header w-full bg-[#1ABC9C] p-4 rounded-xl text-white flex gap-4 h-40"
+        className="header w-full bg-[#1ABC9C] p-4 rounded-xl text-white flex gap-4 h-40 shrink-0"
         style={{ boxShadow: "0 4px 8px rgba(0, 0, 0, 0.25)" }}
       >
         <TiStarFullOutline size="30px" className="mt-1.5" />
@@ -60,26 +65,36 @@ const Plans = memo(() => {
           <IoIosArrowDown className="-rotate-90 text-[#769a92]" size="24px" />
         </div>
       </div>
-      <div className="navLinks flex justify-between">
+      <div className="navLinks flex justify-between shrink-0">
         <div
           className="left flex gap-5 flex-1 border-b-2 max-w-[748px]"
           style={{ borderColor: "rgba(0, 0, 0, 0.05)" }}
         >
           <div
-            className={`discover font-medium cursor-pointer text-[${
-              true ? "#71BABF" : "#1ABC9C"
-            }] flex flex-col gap-1`}
+            className={`discover font-medium cursor-pointer flex flex-col gap-1`}
+            id="0"
+            onClick={changeTypeOfPlans}
+            style={{color: typeOfPlansInView == 1 ? "#71BABF" : "#1ABC9C"}}
           >
             Discover plans
-            {true && <div className="h-0.5 w-full text-[#1ABC9C]"></div>}
+            <div
+              className={`h-1 bg-[#1ABC9C] transition-all duration-200 ${
+                typeOfPlansInView == 0 ? "w-full" : "w-0"
+              }`}
+            ></div>
           </div>
           <div
-            className={`yourPlans font-medium cursor-pointer text-[${
-              true ? "#71BABF" : "#1ABC9C"
-            }] flex flex-col gap-1`}
+            className={`yourPlans font-medium cursor-pointer flex flex-col gap-1`}
+            id="1"
+            onClick={changeTypeOfPlans}
+            style={{color: typeOfPlansInView == 0 ? "#71BABF" : "#1ABC9C"}}
           >
             Your plans
-            {true && <div className="h-0.5 w-full text-[#1ABC9C]"></div>}
+            <div
+              className={`h-1 bg-[#1ABC9C] transition-all duration-200 ${
+                typeOfPlansInView == 1 ? "w-full" : "w-0"
+              }`}
+            ></div>
           </div>
         </div>
         <div className="right flex gap-4 items-center shrink-0">
@@ -92,17 +107,19 @@ const Plans = memo(() => {
           </div>
         </div>
       </div>
-      <div className="bodySection flex flex-col gap-4">
-        {detailsArray.map((plan, index) => {
-          return (
-            <PlanContainers
-              key={plan.heading}
-              heading={plan.heading}
-              points={plan.points}
-              imgSrc={plan.src}
-            />
-          );
-        })}
+      <div className="overflow-y-auto p-4 flex-1 min-h-0">
+        <div className="bodySection flex flex-col gap-4">
+          {detailsArray.map((plan, index) => {
+            return (
+              <PlanContainers
+                key={plan.heading}
+                heading={plan.heading}
+                points={plan.points}
+                imgSrc={plan.src}
+              />
+            );
+          })}
+        </div>
       </div>
     </div>
   );
