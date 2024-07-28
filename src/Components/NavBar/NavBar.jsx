@@ -1,4 +1,5 @@
 import React from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import "./navbar.css";
 import chart from "../../assets/Icons/chart.png";
 import ColorSwatch from "../../assets/Icons/color-swatch.png";
@@ -10,28 +11,39 @@ import Profile from "../../assets/Icons/profile-circle.png";
 import Settings from "../../assets/Icons/setting-2.png";
 import Logout from "../../assets/Icons/logout.png";
 
-// Array of objects containing image names and paths
 const imageData = [
-  { name: "Chart", path: chart },
-  { name: "Color Swatch", path: ColorSwatch },
-  { name: "Health", path: Social },
-  { name: "Home", path: Home },
-  { name: "Notification", path: Notification },
-  { name: "People", path: People },
-  { name: "Profile", path: Profile },
-  { name: "Setting", path: Settings },
+  { name: "Chart", path: chart, route: "/tools" },
+  { name: "Color Swatch", path: ColorSwatch, route: "/plans" },
+  { name: "Health", path: Social, route: "/anallytics" },
+  { name: "Home", path: Home, route: "/" },
+  { name: "Notification", path: Notification, route: "/settings" },
+  { name: "People", path: People, route: "/communities" },
+  { name: "Profile", path: Profile, route: "/social" },
+  { name: "Setting", path: Settings, route: "/settings" },
 ];
 
 export default function NavBar() {
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    // Perform logout logic here, then navigate
+    navigate("/Auth"); // Redirect to login page after logout
+  };
+
   return (
     <div className="navbar h-full w-fit">
       {imageData.map((image, index) => (
-        <div key={index} className={image.name.replace(/\s+/g, "-")}>
+        <Link
+          to={image.route}
+          key={index}
+          className={`navbar-item ${location.pathname === image.route ? 'active' : ''}`}
+        >
           <img src={image.path} alt={image.name} />
-        </div>
+        </Link>
       ))}
       <div className="spacer"></div>
-      <div className="logout">
+      <div className="logout" onClick={handleLogout}>
         <hr></hr>
         <img src={Logout} alt="logout.png" />
       </div>

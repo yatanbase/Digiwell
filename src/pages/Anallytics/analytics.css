@@ -1,0 +1,165 @@
+.analytics{
+    width: 100%;
+    height: 100vh;
+    background-color: rgb(240, 232, 232);
+    display: grid;
+    grid-template-columns: 1fr 20vw;
+    padding-left: 1rem;
+}
+
+.social_sidePanel{
+    width: 100%;
+    height: 100vh;
+    background-color: white;
+    border-radius: 0%;
+    overflow: scroll;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.side_top{
+  
+    height: 15vh;
+    display: flex;
+    overflow: hidden;
+    align-items: center;
+    justify-content: center ;
+    gap: 2rem;
+    flex-wrap: wrap;
+    border-bottom: 1px solid rgb(170, 169, 169);
+    margin: 1rem;
+}
+
+.side_top img{
+    height: 55%;
+    width: auto;
+
+}
+
+.title{
+    display: block;
+    align-items: center;
+
+}
+
+.side_top h4{
+    color: #1ABC9C;
+    font-weight: bolder;
+    font-size: 1.5rem;
+}
+
+.side_top p {
+    opacity: 50%    ;
+}
+
+.events , .RecentUsed{
+    height: 35vh;
+    overflow: hidden;
+   display: flex;
+   align-items: center;
+   justify-content: start;
+    gap: 1rem;
+   flex-direction: column;
+    border-bottom: 1px solid rgb(170, 169, 169);
+    margin: .5rem;
+ 
+}
+
+.RecentUsed{
+    justify-content: start;
+    height: 28vh;
+}
+
+.circle{
+    background-color: yellow;
+    width: 1rem;
+    height:1rem;
+    border-radius: 50%;
+}
+
+.events_title, .Recent_title{
+    display: flex;
+ align-items: center;
+justify-content: center;
+
+    gap: .5rem;
+}
+
+.events_title h4, .Recent_title h4{
+    font-weight: bolder;
+    font-size: 1.5rem;
+    color: black;
+    
+}
+
+.Recent_title h4{
+    font-size: 1.5rem;
+}
+
+.RecentUsed p {
+    font-size: 1.5rem;
+}
+
+.event .circle{
+    height: 2.5rem;
+    width: 2.5rem;
+}
+.event{
+    display: flex;
+    align-items: center;
+    height: 2rem;
+    width: 10;
+    gap: 1rem;
+    justify-content: start;
+    cursor: pointer;
+}
+
+.seeMore{
+    background-color: #1ABC9C;
+    width: 10vw;
+    height: 5vh;
+    border-radius: 15px;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    cursor: pointer;
+}
+
+.timeStamp{
+    
+    height: 33vh;
+
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+   flex-direction: column;
+    border-top: 1px solid rgb(170, 169, 169);
+    margin: .5rem;
+ 
+
+}
+
+.timeStamp img{
+    display: block;
+    position: absolute;
+}
+
+.time{
+    position: absolute; /* Positions text relative to the image container */
+    top: 30%; /* Vertically center the text */
+    left: 30%; /* Horizontally center the text */
+    font-size: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.time p{
+    font-size: 20px;
+}
