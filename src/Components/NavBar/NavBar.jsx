@@ -12,8 +12,8 @@ import Settings from "../../assets/Icons/setting-2.png";
 import Logout from "../../assets/Icons/logout.png";
 
 const imageData = [
-  { name: "Chart", path: chart, route: "/tools" },
-  { name: "Color Swatch", path: ColorSwatch, route: "/plans" },
+  { name: "Chart", path: chart, route: "/plans" },
+  { name: "Color Swatch", path: ColorSwatch, route: "/tools" },
   { name: "Health", path: Social, route: "/anallytics" },
   { name: "Home", path: Home, route: "/" },
   { name: "Notification", path: Notification, route: "/settings" },
