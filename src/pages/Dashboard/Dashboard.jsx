@@ -1,7 +1,9 @@
 import React from 'react'
-
+import './dashboard.css'
 export default function Dashboard() {
   return (
-    <div>Dashboard</div>
+    <div>
+<div className="searchBar">z</div>
+    </div>
   )
 }
